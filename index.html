@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Earth </title>
+    <!-- daisyui and tailwind css -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/c0035a79dd.js"></script>
+</head>
+
+<body class="lg:w-11/12 m-auto bg-[#F0FDF4]">
+
+    <!-- navbar -->
+    <div class="navbar bg-base-100 shadow-sm bg-[#15803D] lg:px-15 fixed lg:w-11/12">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h8m-8 6h16" />
+                    </svg>
+                </div>
+                <ul tabindex="-1"
+                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                    <li class="text-black">About</li>
+                    <li class="text-black">Gallery</li>
+                    <li class="text-black">Plant a Tree</li>
+                </ul>
+            </div>
+            <a class="font-semibold text-white text-xl">Green Earth</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1 gap-3">
+                <li class="text-white"><a href="">About</a></li>
+                <li class="text-white"><a href="">Gallery</a></li>
+                <li class="text-white"><a href="">Plant a Tree</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <a class="btn bg-yellow-400 text-green-600 rounded-xl h-8 border-none">Plant a Tree</a>
+        </div>
+    </div>
+
+    <!-- bg -->
+    <section class="bg-[#CFF0DC] min-h-[300px] pt-24">
+        <div class="flex flex-col lg:flex-row justify-between items-center">
+            <img class="hidden lg:block" src="assets/hero-leaf1.png" alt="">
+            <div class="flex text-center justify-center items-center">
+                <div class="space-y-5">
+                    <h1 class="text-4xl font-semibold">Plant a Tree, Grow a Future</h1>
+                    <p>Join our mission to plant 1 million trees and make the Earth greener for future <br>
+                        generations.</p>
+                    <a class="btn bg-yellow-400 text-green-600 rounded-xl h-9 border-none">Get Involved</a>
+                </div>
+            </div>
+            <img class="hidden lg:block" src="assets/hero-leaf2.png" alt="">
+        </div>
+    </section>
+
+    <!-- choose section -->
+    <section class="mt-15 lg:p-8">
+        <h1 class="font-semibold text-3xl text-center mb-10">Choose Your Trees</h1>
+        <div class="flex gap-2">
+
+            <div class="div-left w-[20%] relative lg:static -left-[100%] lg:left-0">
+                <h1 class="text-2xl font-semibold mb-3">Categories</h1>
+                <div id="category-container" class="">
+
+                </div>
+            </div>
+
+            <div id="card-container" class="div-midle lg:w-full rounded-xl grid lg:grid-cols-3 gap-5">
+
+                <!-- <div class="card">
+                    <div class=" border-blue-400 p-5 bg-white rounded-xl space-y-3">
+                        <img class="m-auto" src="assets/about.png" alt="">
+                        <h1 class="font-semibold text-xl">Mango Tree</h1>
+                        <p>A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense
+                            green</p>
+                        <div class="flex justify-between items-center">
+                            <button class="btn h-7 rounded-lg bg-green-200 text-green-700">Fruit Tree</button>
+                            <h2 class="font-bold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>500</h2>
+                        </div>
+                        <button class="btn w-full rounded-xl bg-[#15803D] text-white">Add to Cart</button>
+                    </div>
+                </div> -->
+
+            </div>
+
+            <div class="div-right p-5 w-[20%] bg-white rounded-xl relative lg:static -right-[100%] lg:right-0">
+                <h1 class="font-semibold text-2xl">Your Cart</h1>
+
+                <div id="cart-container" class="">
+
+                    <!-- <div class="flex justify-between items-center p-3 history-card w-[216px] bg-[#F0FDF4] rounded-xl">
+                        <div class="">
+                            <h1>Mango Tree</h1>
+                            <div class="flex space-x-2 space-y-1 text-gray-400">
+                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span class="text-xl">500</span></p>
+                                <p>X</p>
+                                <p class="text-xl"><span>1</span></p>
+                            </div>
+                        </div>
+                        <div class="text-gray-500">X</div>
+                    </div> -->
+
+                </div>
+                <h2 class="p-5 font-bold text-xl">Total: $<span id="total">0</span></h2>
+
+            </div>
+        </div>
+    </section>
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>
