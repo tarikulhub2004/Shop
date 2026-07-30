@@ -52,7 +52,7 @@ const displayTreeDetails = (values) => {
 // console.log(addCartBtn)
 
 // category container
-const loadCategory = () => {
+const loadCategory = (id) => {
     const url = "https://openapi.programming-hero.com/api/categories";
     fetch(url)
         .then((res) => res.json())
@@ -69,6 +69,7 @@ loadCategory()
 // }
 
 
+
 // Display All Category 
 displayCategory = (categories) => {
     // console.log(categories)
@@ -82,12 +83,17 @@ displayCategory = (categories) => {
         const btnCategory = document.createElement("div");
 
         btnCategory.innerHTML = `
-        <button onclick="loadCategoryData(${category.id})" class="btn w-full justify-start bg-[#F0FDF4] hover:bg-[#15803D] hover:text-white border-none">${category.category_name}</button>
+        <button id="category-btn-${category.id}" onclick="loadCategoryData(${category.id})" class="category-btn btn w-full justify-start bg-[#F0FDF4] hover:bg-[#15803D] hover:text-white border-none">${category.category_name}</button>
         `
         categoryContainer.append(btnCategory)
     }
 }
 
+const removeActiveClass = () => {
+    const categoryBtns = document.querySelectorAll(".category-btn")
+    // console.log(categoryBtns)
+    categoryBtns.forEach((btn)=> btn.classList.remove("active"))
+}
 
 // Load Category Data
 const loadCategoryData = (id) => {
@@ -97,6 +103,10 @@ const loadCategoryData = (id) => {
     fetch(url)
         .then((res) => res.json())
         .then((json) => {
+            removeActiveClass()
+            const clickBtn = document.getElementById(`category-btn-${id}`)
+            // console.log(clickBtn)
+            clickBtn.classList.add("active")
             displayCategoryData(json.plants)
         })
 }
@@ -220,5 +230,5 @@ const displayAddCartBtn = (carts) => {
 `;
         cartContainer.append(cardBox)
     })
-    document.getElementById("total").innerText= total
+    document.getElementById("total").innerText = total
 }
