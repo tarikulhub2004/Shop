@@ -34,7 +34,7 @@ const displayTreeDetails = (values) => {
               <div class="shadow-sm rounded-xl">
                     <div class=" border-blue-400 p-5 bg-white rounded-xl space-y-3">
                         <img class="rounded-xl w-full h-[186px] object-cover" src="${value.image}" alt="">
-                        <h1 class="font-semibold text-xl">${value.name}</h1>
+                        <h1 class="font-semibold text-xl" onclick="loadWord(${value.id})">${value.name}</h1>
                         <p>${value.description.slice(0, 100)}....</p>
                         <div class="flex justify-between items-center">
                             <button class="btn h-7 rounded-lg bg-green-200 text-green-700">${value.category}</button>
@@ -46,6 +46,34 @@ const displayTreeDetails = (values) => {
         `
         cardContainer.append(card)
     }
+}
+
+// loadWord
+const loadWord = (id) => {
+    const url = `https://openapi.programming-hero.com/api/plant/${id}`
+    fetch(url)
+        .then(res => res.json())
+        .then(json => displayWord(json.plants))
+}
+const displayWord = (word) => {
+    console.log(word)
+
+    const wordContainer = document.getElementById("word-container");
+    wordContainer.innerHTML = "";
+    const wordDiv = document.createElement("div");
+    wordDiv.innerHTML = `
+    
+           <div class="shadow-sm rounded-xl">
+                    <div class=" border-blue-400 p-5 bg-white rounded-xl space-y-3">
+                        <img class="rounded-xl w-full h-[250px] object-cover" src="${word.image}" alt="">
+                        <h1 class="font-semibold text-xl" onclick="loadWord(${word.id})">${word.name}</h1>
+                        <p>${word.description}</p>
+                    </div>
+                </div>
+
+    `
+    wordContainer.append(wordDiv)
+    document.getElementById("my_modal_5").showModal()
 }
 
 // const addCartBtn = document.getElementById("btn-${value.id}")
@@ -92,12 +120,13 @@ displayCategory = (categories) => {
 const removeActiveClass = () => {
     const categoryBtns = document.querySelectorAll(".category-btn")
     // console.log(categoryBtns)
-    categoryBtns.forEach((btn)=> btn.classList.remove("active"))
+    categoryBtns.forEach((btn) => btn.classList.remove("active"))
 }
 
 // Load Category Data
 const loadCategoryData = (id) => {
     // console.log(id)
+    manageSpinner(true)
     const url = `https://openapi.programming-hero.com/api/category/${id}`
 
     fetch(url)
@@ -124,7 +153,7 @@ const displayCategoryData = (plants) => {
               <div class="shadow-sm rounded-xl">
                     <div class=" border-blue-400 p-5 bg-white rounded-xl space-y-3">
                         <img class="rounded-xl w-full h-[186px] object-cover" src="${plant.image}" alt="">
-                        <h1 class="font-semibold text-xl">${plant.name}</h1>
+                        <h1 class="font-semibold text-xl" onclick="loadWord(${plant.id})">${plant.name}</h1>
                         <p>${plant.description.slice(0, 100)}....</p>
                         <div class="flex justify-between items-center">
                             <button class="btn h-7 rounded-lg bg-green-200 text-green-700">${plant.category}</button>
@@ -135,9 +164,8 @@ const displayCategoryData = (plants) => {
                 </div>
         `
         cardContainer.append(card)
-
-
     })
+    manageSpinner()
 }
 
 
@@ -231,4 +259,16 @@ const displayAddCartBtn = (carts) => {
         cartContainer.append(cardBox)
     })
     document.getElementById("total").innerText = total
+}
+
+// spinner 
+const manageSpinner = (status)=>{
+    if(status == true){
+        document.getElementById("spinner").classList.remove("hidden")
+        document.getElementById("card-container").classList.add("hidden")
+    }
+    else{
+        document.getElementById("card-container").classList.remove("hidden")
+        document.getElementById("spinner").classList.add("hidden")
+    }
 }

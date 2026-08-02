@@ -64,6 +64,24 @@
         </div>
     </section>
 
+    <!-- modal -->
+    <div class="flex justify-center"><!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <div id="word-container" class="">
+
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+    </div>
+
     <!-- choose section -->
     <section class="mt-15 lg:p-8">
         <h1 class="font-semibold text-3xl text-center mb-10">Choose Your Trees</h1>
@@ -76,10 +94,13 @@
 
                 </div>
             </div>
-                     <!-- relative lg:static -left-[100%] lg:left-0 -->
+            <!-- relative lg:static -left-[100%] lg:left-0 -->
 
 
             <!-- mid -->
+            <div id="spinner" class="flex justify-center p-10 items-center hidden lg:w-full">
+                <span class="loading loading-bars loading-xl"></span>
+            </div>
             <div id="card-container" class="div-midle lg:w-full rounded-xl grid lg:grid-cols-3 gap-5">
 
                 <!-- <div class="card">
@@ -99,7 +120,7 @@
             </div>
 
             <!-- right -->
-            <div class="div-right p-5 lg:w-[20%] bg-white rounded-xl  >
+            <div class="div-right p-5 lg:w-[20%] bg-white rounded-xl">
                 <h1 class="font-semibold text-2xl">Your Cart</h1>
 
                 <div id="cart-container" class="">
